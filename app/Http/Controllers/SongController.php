@@ -6,7 +6,21 @@ set_time_limit(0);
 
 class SongController extends Controller {
 
-	public function getGet($id=0) {
+	public function getGet($singer_id)
+	{
+		$headers = [
+			'User-Agent'=>'Mozilla/5.0 (iPhone; U; CPU iPhone OS 4_0 like Mac OS X; en-us) AppleWebKit/532.9 (KHTML, like Gecko) Version/4.0.5 Mobile/8A293 Safari/6531.22.7',
+		];
+
+		$singer = Singer::where('id', $singer_id)->first();
+		$artist = $singer->artist;
+		$url = "http://music.baidu.com/loadmore/artistsong/?limits=1000&order=2&method=baidu.ting.artist.getSongList&tinguid=$artist&offset=0";
+		$resp = Requests::get($url, $headers);
+		dd(json_decode($resp->body));
+
+	}
+
+	public function getArtist($id=0) {
 
 //		$rs = Singer::all();
 //		$t=[];
