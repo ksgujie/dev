@@ -23,6 +23,8 @@ class SongController extends Controller {
 		];
 		$response = Requests::get("http://music.baidu.com/search?key=$name", $headers);
 		$artist = regMatch($response->body, '|data-url="/artist/(\d+)/|i');
+		$singer->artist = $artist;
+		$singer->save();
 
 		file_put_contents("f:/songs/".$id.'.html', $response->body);
 		file_put_contents("g:/a/$id.txt", $artist."\n".$name);
