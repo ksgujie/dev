@@ -31,7 +31,7 @@ for r in rs:
 def run_thread():
 	while not queue.empty():
 		try:
-			r = requests.get("http://dev/blog/public/song/get/" + queue.get())
+			r = requests.get("http://dev/dev/public/song/get/" + queue.get())
 			print(r.text)
 		except:
 			print('error')
