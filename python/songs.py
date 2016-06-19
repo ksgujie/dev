@@ -38,7 +38,7 @@ def run_thread():
 
 
 threads=[]
-for i in range(1,3):
+for i in range(1,8):
 	threads.append(threading.Thread(target=run_thread))
 
 for t in threads:

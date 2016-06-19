@@ -29,7 +29,7 @@ class SongController extends Controller {
 		file_put_contents("f:/songs/".$id.'.html', $response->body);
 		file_put_contents("g:/a/$id.txt", $artist."\n".$name);
 
-		return "$artist - $name";
+		return "$id - $artist - $name";
 	}
 
 
